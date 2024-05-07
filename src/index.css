@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .main-padding {
+    @apply px-6 md:px-14 lg:px-28;
+  }
+}
+
+.flex-important {
+  display: flex !important;
+}
