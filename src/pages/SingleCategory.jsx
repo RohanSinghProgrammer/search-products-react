@@ -61,7 +61,7 @@ const SingleCategory = () => {
                 type="radio"
                 value=""
                 name="default-radio"
-                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 "
+                className="w-4 h-4 text-blue-600 accent-indigo-600 bg-gray-100 border-gray-300 focus:ring-blue-500 "
               />
               <label
                 htmlFor="default-radio-1"
@@ -77,7 +77,7 @@ const SingleCategory = () => {
                 type="radio"
                 value=""
                 name="default-radio"
-                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 "
+                className="w-4 h-4 text-blue-600 accent-indigo-600 bg-gray-100 border-gray-300 focus:ring-blue-500 "
               />
               <label
                 htmlFor="default-radio-2"
@@ -91,7 +91,7 @@ const SingleCategory = () => {
             <h3 className="text-lg mb-2 font-medium">Select Price Range</h3>
             <div className="flex items-center gap-2 ml-2">
               <span>₹0</span>
-              <input type="range" />
+              <input type="range"className="accent-indigo-600" />
               <span>₹100</span>
             </div>
           </div>
@@ -102,7 +102,7 @@ const SingleCategory = () => {
                 id="default-checkbox"
                 type="checkbox"
                 value=""
-                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
+                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 accent-indigo-600"
               />
               <label
                 htmlFor="default-checkbox"
