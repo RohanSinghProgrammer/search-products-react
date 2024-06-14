@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { IoIosStarOutline, IoMdStar } from "react-icons/io";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../redux/slices/cart";
 
 const SingleProduct = () => {
   const { id } = useParams();
   const [data, setData] = useState(null);
+  const dispatch = useDispatch()
 
   useEffect(() => {
     fetch(`https://fakestoreapi.com/products/${id}`)
@@ -64,7 +67,7 @@ const SingleProduct = () => {
                   ₹{Math.floor(data.price * 82.84)}
                 </span>
                 <div className="flex gap-2 md:gap-4">
-                  <button className="flex ml-auto text-white bg-indigo-500 border-0 py-1.5 md:py-2 px-4 md:px-6 focus:outline-none hover:bg-indigo-600 rounded">
+                  <button onClick={()=> dispatch(addToCart(data))} className="flex ml-auto text-white bg-indigo-500 border-0 py-1.5 md:py-2 px-4 md:px-6 focus:outline-none hover:bg-indigo-600 rounded">
                     Add to Cart
                   </button>
                   <button className="flex ml-auto text-white bg-indigo-500 border-0 py-1.5 md:py-2 px-4 md:px-6 focus:outline-none hover:bg-indigo-600 rounded">
