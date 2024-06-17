@@ -10,7 +10,7 @@ importers:
     dependencies:
       '@reduxjs/toolkit':
         specifier: ^2.2.5
-        version: 2.2.5(react-redux@9.1.2)(react@18.2.0)
+        version: 2.2.5(react-redux@9.1.2(@types/react@18.2.64)(react@18.2.0)(redux@5.0.1))(react@18.2.0)
       react:
         specifier: ^18.2.0
         version: 18.2.0
@@ -28,10 +28,13 @@ importers:
         version: 9.1.2(@types/react@18.2.64)(react@18.2.0)(redux@5.0.1)
       react-router-dom:
         specifier: ^6.22.1
-        version: 6.22.3(react-dom@18.2.0)(react@18.2.0)
+        version: 6.22.3(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       react-slick:
         specifier: ^0.30.2
-        version: 0.30.2(react-dom@18.2.0)(react@18.2.0)
+        version: 0.30.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      react-toastify:
+        specifier: ^10.0.5
+        version: 10.0.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       slick-carousel:
         specifier: ^1.8.1
         version: 1.8.1(jquery@3.7.1)
@@ -652,6 +655,10 @@ packages:
 
   classnames@2.5.1:
     resolution: {integrity: sha512-saHYOzhIQs6wy2sVxTM6bUDsQO4F50V9RQ22qBpEdCW+I+/Wmke2HOl6lS6dTpdxVhb88/I6+Hs+438c3lfUow==}
+
+  clsx@2.1.1:
+    resolution: {integrity: sha512-eYm0QWBtUrBWZWG0d386OGAw16Z995PiOVo2B7bjWSbHedGl5e0ZWaq65kOGgUSNesEIDkB9ISbTg/JK9dhCZA==}
+    engines: {node: '>=6'}
 
   color-convert@1.9.3:
     resolution: {integrity: sha512-QfAUtd+vFdAtFQcC8CCyYt1fYWxSqAiK2cSD6zDB8N3cpsEBAvRxp9zOGg6G/SHHJYAT88/az/IuDGALsNVbGg==}
@@ -1434,6 +1441,12 @@ packages:
       react: ^0.14.0 || ^15.0.1 || ^16.0.0 || ^17.0.0 || ^18.0.0
       react-dom: ^0.14.0 || ^15.0.1 || ^16.0.0 || ^17.0.0 || ^18.0.0
 
+  react-toastify@10.0.5:
+    resolution: {integrity: sha512-mNKt2jBXJg4O7pSdbNUfDdTsK9FIdikfsIE/yUCxbAEXl4HMyJaivrVFcn3Elvt5xvCQYhUZm+hqTIu1UXM3Pw==}
+    peerDependencies:
+      react: '>=18'
+      react-dom: '>=18'
+
   react@18.2.0:
     resolution: {integrity: sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==}
     engines: {node: '>=0.10.0'}
@@ -2030,14 +2043,15 @@ snapshots:
   '@pkgjs/parseargs@0.11.0':
     optional: true
 
-  '@reduxjs/toolkit@2.2.5(react-redux@9.1.2)(react@18.2.0)':
+  '@reduxjs/toolkit@2.2.5(react-redux@9.1.2(@types/react@18.2.64)(react@18.2.0)(redux@5.0.1))(react@18.2.0)':
     dependencies:
       immer: 10.1.1
-      react: 18.2.0
-      react-redux: 9.1.2(@types/react@18.2.64)(react@18.2.0)(redux@5.0.1)
       redux: 5.0.1
       redux-thunk: 3.1.0(redux@5.0.1)
       reselect: 5.1.1
+    optionalDependencies:
+      react: 18.2.0
+      react-redux: 9.1.2(@types/react@18.2.64)(react@18.2.0)(redux@5.0.1)
 
   '@remix-run/router@1.15.3': {}
 
@@ -2311,6 +2325,8 @@ snapshots:
       fsevents: 2.3.3
 
   classnames@2.5.1: {}
+
+  clsx@2.1.1: {}
 
   color-convert@1.9.3:
     dependencies:
@@ -3075,8 +3091,9 @@ snapshots:
   postcss-load-config@4.0.2(postcss@8.4.35):
     dependencies:
       lilconfig: 3.1.1
-      postcss: 8.4.35
       yaml: 2.4.1
+    optionalDependencies:
+      postcss: 8.4.35
 
   postcss-nested@6.0.1(postcss@8.4.35):
     dependencies:
@@ -3126,15 +3143,16 @@ snapshots:
 
   react-redux@9.1.2(@types/react@18.2.64)(react@18.2.0)(redux@5.0.1):
     dependencies:
-      '@types/react': 18.2.64
       '@types/use-sync-external-store': 0.0.3
       react: 18.2.0
-      redux: 5.0.1
       use-sync-external-store: 1.2.2(react@18.2.0)
+    optionalDependencies:
+      '@types/react': 18.2.64
+      redux: 5.0.1
 
   react-refresh@0.14.0: {}
 
-  react-router-dom@6.22.3(react-dom@18.2.0)(react@18.2.0):
+  react-router-dom@6.22.3(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
       '@remix-run/router': 1.15.3
       react: 18.2.0
@@ -3146,7 +3164,7 @@ snapshots:
       '@remix-run/router': 1.15.3
       react: 18.2.0
 
-  react-slick@0.30.2(react-dom@18.2.0)(react@18.2.0):
+  react-slick@0.30.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
       classnames: 2.5.1
       enquire.js: 2.1.6
@@ -3155,6 +3173,12 @@ snapshots:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       resize-observer-polyfill: 1.5.1
+
+  react-toastify@10.0.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
+    dependencies:
+      clsx: 2.1.1
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
 
   react@18.2.0:
     dependencies:
