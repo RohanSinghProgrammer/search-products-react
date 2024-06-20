@@ -33,7 +33,7 @@ const cartSlice = createSlice({
         toast.success("Product added successfully!")
         return {
           ...state,
-          products: [{ ...action.payload, qty: 1 }],
+          products: [...state.products,{ ...action.payload, qty: 1 }],
         };
       }
     },
