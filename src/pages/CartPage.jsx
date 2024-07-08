@@ -1,11 +1,11 @@
 import { FaMinus, FaPlus } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { addToCart } from "../redux/slices/cart";
+import { addToCart, clearCart, removeFromCart } from "../redux/slices/cart";
 
 const CartPage = () => {
   const items = useSelector((state) => state.cart);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   return (
     <div className="flex">
       {/* Shopping Cart */}
@@ -31,7 +31,11 @@ const CartPage = () => {
               <tr key={item?.id}>
                 <td className="w-[40%]">
                   <div className="flex items-center justify-center p-4 gap-2">
-                    <img src={item?.image} alt={item?.title.slice(0, 20)} className="size-20 object-contain" />
+                    <img
+                      src={item?.image}
+                      alt={item?.title.slice(0, 20)}
+                      className="size-20 object-contain"
+                    />
                     <div>
                       <p className="text-2xl font-semibold">
                         {item?.title.slice(0, 20)}...
@@ -44,11 +48,17 @@ const CartPage = () => {
                 </td>
                 <td>
                   <div className="flex items-center space-x-4 justify-center">
-                    <FaPlus onClick={()=> dispatch(addToCart(item))} className="cursor-pointer" />
+                    <FaPlus
+                      onClick={() => dispatch(addToCart(item))}
+                      className="cursor-pointer"
+                    />
                     <div className="border size-8 grid place-items-center">
                       {item?.qty}
                     </div>
-                    <FaMinus className="cursor-pointer"/>
+                    <FaMinus
+                      onClick={() => dispatch(removeFromCart(item))}
+                      className="cursor-pointer"
+                    />
                   </div>
                 </td>
                 <td>
@@ -62,6 +72,14 @@ const CartPage = () => {
               </tr>
             ))}
           </tbody>
+          {items?.products.length > 0 && (
+            <button
+              onClick={() => dispatch(clearCart())}
+              className="ml-8 my-4 py-2 px-6 bg-red-500 text-white rounded-md"
+            >
+              Clear Cart
+            </button>
+          )}
         </table>
       </div>
       {/* Order Summery */}
