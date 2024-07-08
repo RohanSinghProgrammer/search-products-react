@@ -1,7 +1,11 @@
 import { FaMinus, FaPlus } from "react-icons/fa";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { addToCart } from "../redux/slices/cart";
 
 const CartPage = () => {
-  // https://www.bing.com/images/search?view=detailv2&iss=sbi&form=SBIIDP&sbisrc=ImgDropper&q=imgurl:https%3A%2F%2Fblog.magezon.com%2Fwp-content%2Fuploads%2F2023%2F02%2Fwebsite-shopping-cart-page.png&idpbck=1&selectedindex=0&id=https%3A%2F%2Fblog.magezon.com%2Fwp-content%2Fuploads%2F2023%2F02%2Fwebsite-shopping-cart-page.png&ccid=guCS6JS%2B&simid=608049734967770388&ck=30A0934751D9995A68F7B43AC954F4F9&thid=OIP.guCS6JS-pj!_z2-0042ey4QHaFd&mediaurl=https%3A%2F%2Fblog.magezon.com%2Fwp-content%2Fuploads%2F2023%2F02%2Fwebsite-shopping-cart-page.png&exph=586&expw=795&vt=2&sim=11
+  const items = useSelector((state) => state.cart);
+  const dispatch = useDispatch()
   return (
     <div className="flex">
       {/* Shopping Cart */}
@@ -23,42 +27,40 @@ const CartPage = () => {
             </tr>
           </thead>
           <tbody>
-            {Array(4)
-              .fill(0)
-              .map((_, index) => (
-                <tr key={index}>
-                  <td className="w-[40%]">
-                    <div className="flex items-center justify-center p-4 gap-2">
-                      <img
-                        src="https://th.bing.com/th/id/OIP.QA0LoqPdFuYlRAmA7VDrXQHaEu?w=277&h=180&c=7&r=0&o=5&pid=1.7"
-                        alt="PS5"
-                        className="size-20"
-                      />
-                      <div>
-                        <p className="text-2xl font-semibold">PS 5</p>
-                        <p className="text-sm">
-                          Lorem ipsum dolor sit amet consectetur.
-                        </p>
-                      </div>
+            {items.products.map((item) => (
+              <tr key={item?.id}>
+                <td className="w-[40%]">
+                  <div className="flex items-center justify-center p-4 gap-2">
+                    <img src={item?.image} alt={item?.title.slice(0, 20)} className="size-20 object-contain" />
+                    <div>
+                      <p className="text-2xl font-semibold">
+                        {item?.title.slice(0, 20)}...
+                      </p>
+                      <p className="text-sm">
+                        {item?.description.slice(0, 60)}...
+                      </p>
                     </div>
-                  </td>
-                  <td>
-                    <div className="flex items-center space-x-4 justify-center">
-                      <FaPlus />
-                      <div className="border size-8 grid place-items-center">
-                        2
-                      </div>
-                      <FaMinus />
+                  </div>
+                </td>
+                <td>
+                  <div className="flex items-center space-x-4 justify-center">
+                    <FaPlus onClick={()=> dispatch(addToCart(item))} className="cursor-pointer" />
+                    <div className="border size-8 grid place-items-center">
+                      {item?.qty}
                     </div>
-                  </td>
-                  <td>
-                    <div className="grid place-items-center">₹1500</div>
-                  </td>
-                  <td>
-                    <div className="grid place-items-center">₹3000</div>
-                  </td>
-                </tr>
-              ))}
+                    <FaMinus className="cursor-pointer"/>
+                  </div>
+                </td>
+                <td>
+                  <div className="grid place-items-center">₹{item?.price}</div>
+                </td>
+                <td>
+                  <div className="grid place-items-center">
+                    ₹{(item?.price * item?.qty).toFixed(2)}
+                  </div>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
