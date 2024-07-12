@@ -6,14 +6,14 @@ import { addToCart, clearCart, removeFromCart } from "../redux/slices/cart";
 const CartPage = () => {
   const items = useSelector((state) => state.cart);
   const dispatch = useDispatch();
-  return (
+  return items.products.length ? (
     <div className="flex">
       {/* Shopping Cart */}
       <div className="w-[70%] p-6">
         {/* Heading */}
         <div className="flex justify-between py-4 px-6 text-3xl font-bold text-neutral-700">
           <p>Shopping Cart</p>
-          <p>3 Items</p>
+          <p>{items.products.length} Items</p>
         </div>
         <hr />
         {/* Items Table */}
@@ -131,6 +131,10 @@ const CartPage = () => {
           checkout
         </button>
       </div>
+    </div>
+  ) : (
+    <div className="grid place-items-center h-[calc(100vh-4rem)]">
+      <img src="empty-cart.svg" alt="Empty" className="h-72" />
     </div>
   );
 };
